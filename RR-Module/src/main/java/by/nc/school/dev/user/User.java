@@ -6,6 +6,11 @@ public abstract class User {
     protected String password;
     protected String fullName;
 
+    public User(String login, String password, String fullName) {
+        this.login = login;
+        this.password = password;
+        this.fullName = fullName;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -2,6 +2,7 @@ package by.nc.school.dev;
 
 import by.nc.school.dev.data.FakeUserGenerator;
 import by.nc.school.dev.user.User;
+import by.nc.school.dev.userservices.ValidationService;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -9,7 +10,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main( String[] args ) throws IOException {
-        FakeUserGenerator.serialize();
+//        FakeUserGenerator.serialize();
         testValidation();
     }
 
@@ -21,7 +22,7 @@ public class App {
             String username = sc.nextLine();
             System.out.println("Input password ");
             String password = sc.nextLine();
-            User currentUser = LoginController.login(username, password);
+            User currentUser = new ValidationService().validate(username, password);
             if (currentUser != null) {
                 break;
             }

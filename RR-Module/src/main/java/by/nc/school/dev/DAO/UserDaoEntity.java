@@ -8,12 +8,12 @@ import java.util.Map;
 
 public class UserDaoEntity extends BaseDaoEntity implements Serializable {
 
-    private static Map<Integer, UserFactory> factories = new HashMap<Integer, UserFactory>();
+    private static Map<Integer, UserBuilder> factories = new HashMap<Integer, UserBuilder>();
 
     static {
-        factories.put(0, new StudentFactory());
-        factories.put(1, new TutorFactory());
-        factories.put(2, new DeanFactory());
+        factories.put(0, new StudentBuilder());
+        factories.put(1, new TutorBuilder());
+        factories.put(2, new DeanBuilder());
     }
 
     private String username;

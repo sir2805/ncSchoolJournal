@@ -1,17 +1,17 @@
 package by.nc.school.dev.user;
 
-import by.nc.school.dev.Subject;
-import by.nc.school.dev.abilities.StudentAbilities;
 
-public class Student extends User implements StudentAbilities {
+public class Student extends User {
 
     private int groupId;
 
     public Student(String login, String password, String fullName, int groupId) {
-        this.login = login;
-        this.password = password;
-        this.fullName = fullName;
+        super(login, password, fullName);
         this.groupId = groupId;
+    }
+
+    public int getGroupId() {
+        return groupId;
     }
 
     @Override
@@ -40,21 +40,5 @@ public class Student extends User implements StudentAbilities {
         int result = super.hashCode();
         result = 31 * result + groupId;
         return result;
-    }
-
-    public void getMarks(Subject subject) {
-
-    }
-
-    public void getExamMark(Subject subject) {
-
-    }
-
-    public void getAllmarks() {
-
-    }
-
-    public void getGroup() {
-
     }
 }
