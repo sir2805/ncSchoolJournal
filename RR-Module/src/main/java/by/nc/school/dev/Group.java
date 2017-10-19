@@ -9,14 +9,9 @@ import java.util.Map;
 public class Group {
 
     private int groupNumber;
-
     private int groupId;
-
     private List<Student> students;
-
     private Tutor curator;
-
-    private Map<Subject, SubjectJournal> journal;
 
     public int getGroupNumber() {
         return groupNumber;
@@ -32,10 +27,6 @@ public class Group {
 
     public Tutor getCurator() {
         return curator;
-    }
-
-    public Map<Subject, SubjectJournal> getJournal() {
-        return journal;
     }
 
     @Override

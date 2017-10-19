@@ -1,9 +1,8 @@
-package by.nc.school.dev.DAO;
+package by.nc.school.dev.dao;
 
 interface IDao<T extends BaseDaoEntity> {
 
-    // get by id
-    void get(T entity);
+    void get(int id);
     T create(T entity);
     void update(T entity);
     void delete(T entity);

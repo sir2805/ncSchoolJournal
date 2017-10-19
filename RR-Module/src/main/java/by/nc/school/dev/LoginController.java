@@ -1,7 +1,7 @@
 package by.nc.school.dev;
 
 import by.nc.school.dev.user.User;
-import by.nc.school.dev.userservices.ValidationService;
+import by.nc.school.dev.services.ValidationService;
 
 public class LoginController {
 

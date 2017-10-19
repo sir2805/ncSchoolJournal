@@ -1,4 +1,4 @@
-package by.nc.school.dev.DAO;
+package by.nc.school.dev.dao;
 
 import by.nc.school.dev.data.FakeUserGenerator;
 
@@ -23,7 +23,7 @@ public class UserDao extends BaseDao<UserDaoEntity> {
         return null;
     }
 
-    public void get(UserDaoEntity entity) {
+    public void get(int id) {
 
     }
 

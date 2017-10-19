@@ -2,7 +2,7 @@ package by.nc.school.dev;
 
 import by.nc.school.dev.data.FakeUserGenerator;
 import by.nc.school.dev.user.User;
-import by.nc.school.dev.userservices.ValidationService;
+import by.nc.school.dev.services.ValidationService;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main( String[] args ) throws IOException {
-//        FakeUserGenerator.serialize();
+        FakeUserGenerator.serialize();
         testValidation();
     }
 

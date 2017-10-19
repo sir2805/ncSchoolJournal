@@ -1,6 +1,6 @@
 package by.nc.school.dev.user;
 
-import by.nc.school.dev.DAO.UserDaoEntity;
+import by.nc.school.dev.dao.UserDaoEntity;
 
 public class StudentBuilder extends UserBuilder {
 

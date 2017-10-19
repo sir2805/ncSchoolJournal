@@ -12,7 +12,6 @@ import java.util.Map;
 public class SubjectJournal {
 
     private Map<Student, List<Mark>> marksList;
-
     private Tutor tutor;
 
     public Map<Student, List<Mark>> getMarksList() {

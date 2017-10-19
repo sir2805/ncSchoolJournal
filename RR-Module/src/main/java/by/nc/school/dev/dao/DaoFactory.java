@@ -1,4 +1,4 @@
-package by.nc.school.dev.DAO;
+package by.nc.school.dev.dao;
 
 interface IDaoFactory {
 

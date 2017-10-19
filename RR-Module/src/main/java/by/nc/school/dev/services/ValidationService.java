@@ -1,8 +1,8 @@
-package by.nc.school.dev.userservices;
+package by.nc.school.dev.services;
 
-import by.nc.school.dev.DAO.DaoFactory;
-import by.nc.school.dev.DAO.UserDao;
-import by.nc.school.dev.DAO.UserDaoEntity;
+import by.nc.school.dev.dao.DaoFactory;
+import by.nc.school.dev.dao.UserDao;
+import by.nc.school.dev.dao.UserDaoEntity;
 import by.nc.school.dev.user.User;
 
 public class ValidationService {
@@ -17,7 +17,7 @@ public class ValidationService {
         } else if (!entity.getPassword().equals(password)) {
             System.out.println("incorrect password");
         } else {
-            currentUser = entity.getUser();
+            currentUser = new UserService().getUser(entity);
             System.out.println("validation successful. Welcome " + currentUser.getFullName());
         }
         return currentUser;

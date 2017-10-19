@@ -1,20 +1,6 @@
-package by.nc.school.dev.DAO;
+package by.nc.school.dev.dao;
 
-import by.nc.school.dev.user.*;
-
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-
-public class UserDaoEntity extends BaseDaoEntity implements Serializable {
-
-    private static Map<Integer, UserBuilder> factories = new HashMap<Integer, UserBuilder>();
-
-    static {
-        factories.put(0, new StudentBuilder());
-        factories.put(1, new TutorBuilder());
-        factories.put(2, new DeanBuilder());
-    }
+public class UserDaoEntity extends BaseDaoEntity {
 
     private String username;
     private String password;
@@ -22,20 +8,13 @@ public class UserDaoEntity extends BaseDaoEntity implements Serializable {
     private int status;
     private int groupId;
 
-    public UserDaoEntity(String username, String password, String fullName, int status, int groupId) {
+    public UserDaoEntity(int id, String username, String password, String fullName, int status, int groupId) {
+        super(id);
         this.username = username;
         this.password = password;
         this.fullName = fullName;
         this.status = status;
         this.groupId = groupId;
-    }
-
-    public User getUser() {
-        if (status > 2) {
-            throw new UnsupportedOperationException("Invalid status");
-        } else {
-            return factories.get(status).createUser(this);
-        }
     }
 
     @Override
