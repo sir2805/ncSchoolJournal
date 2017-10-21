@@ -5,8 +5,8 @@ public class Student extends User {
 
     private int groupId;
 
-    public Student(String login, String password, String fullName, int groupId) {
-        super(login, password, fullName);
+    public Student(String login, String password, String fullName, int status, int groupId) {
+        super(login, password, fullName, status);
         this.groupId = groupId;
     }
 

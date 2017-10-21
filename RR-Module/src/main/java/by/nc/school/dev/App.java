@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 public class App {
     public static void main( String[] args ) throws IOException {
-        new FakeUserGenerator().serialize();
+//        new FakeUserGenerator().serialize();
         FakeGroupGenerator fakeGroupGenerator = new FakeGroupGenerator();
-        fakeGroupGenerator.serialize();
+//        fakeGroupGenerator.serialize();
         System.out.println(fakeGroupGenerator.deserialize());
 //        testValidation();
     }

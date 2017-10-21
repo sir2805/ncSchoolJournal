@@ -1,7 +1,7 @@
 package by.nc.school.dev.services;
 
 import by.nc.school.dev.Group;
-import by.nc.school.dev.GroupBuilder;
+import by.nc.school.dev.builders.GroupBuilder;
 import by.nc.school.dev.dao.GroupDao;
 import by.nc.school.dev.dao.GroupDaoEntity;
 

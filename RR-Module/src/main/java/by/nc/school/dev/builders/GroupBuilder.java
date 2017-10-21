@@ -1,11 +1,10 @@
-package by.nc.school.dev;
+package by.nc.school.dev.builders;
 
+import by.nc.school.dev.Group;
 import by.nc.school.dev.dao.GroupDaoEntity;
 import by.nc.school.dev.dao.UserDao;
 import by.nc.school.dev.user.Student;
-import by.nc.school.dev.user.StudentBuilder;
 import by.nc.school.dev.user.Tutor;
-import by.nc.school.dev.user.TutorBuilder;
 
 import java.util.ArrayList;
 import java.util.List;

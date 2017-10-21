@@ -4,8 +4,8 @@ public class Tutor extends User {
 
     private int groupId;
 
-    public Tutor(String login, String password, String fullName, int groupId) {
-        super(login, password, fullName);
+    public Tutor(String login, String password, String fullName, int status, int groupId) {
+        super(login, password, fullName, status);
         this.groupId = groupId;
     }
 

@@ -1,5 +1,9 @@
 package by.nc.school.dev.services;
 
+import by.nc.school.dev.builders.DeanBuilder;
+import by.nc.school.dev.builders.StudentBuilder;
+import by.nc.school.dev.builders.TutorBuilder;
+import by.nc.school.dev.builders.UserBuilder;
 import by.nc.school.dev.dao.UserDaoEntity;
 import by.nc.school.dev.user.*;
 

@@ -2,8 +2,8 @@ package by.nc.school.dev.user;
 
 public class Dean extends User {
 
-    public Dean(String login, String password, String fullName) {
-        super(login, password, fullName);
+    public Dean(String login, String password, String fullName, int status) {
+        super(login, password, fullName, status);
     }
 
     @Override
