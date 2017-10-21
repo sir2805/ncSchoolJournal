@@ -1,5 +1,6 @@
 package by.nc.school.dev;
 
+import by.nc.school.dev.data.FakeGroupGenerator;
 import by.nc.school.dev.data.FakeUserGenerator;
 import by.nc.school.dev.user.User;
 import by.nc.school.dev.services.ValidationService;
@@ -10,12 +11,14 @@ import java.util.Scanner;
 
 public class App {
     public static void main( String[] args ) throws IOException {
-        FakeUserGenerator.serialize();
-        testValidation();
+        new FakeUserGenerator().serialize();
+        FakeGroupGenerator fakeGroupGenerator = new FakeGroupGenerator();
+        fakeGroupGenerator.serialize();
+        System.out.println(fakeGroupGenerator.deserialize());
+//        testValidation();
     }
 
     public static void testValidation() {
-
         while (true) {
             Scanner sc = new Scanner(System.in);
             System.out.println("Input username ");

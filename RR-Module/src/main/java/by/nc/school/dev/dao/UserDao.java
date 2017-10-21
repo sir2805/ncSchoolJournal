@@ -7,24 +7,30 @@ import java.util.List;
 
 public class UserDao extends BaseDao<UserDaoEntity> {
 
+    private List<UserDaoEntity> entities;
+
     public UserDaoEntity findUserByUserName(String userName) {
-        try {
-            List<UserDaoEntity> entities =  FakeUserGenerator.deserialize();
-            for (UserDaoEntity entity : entities) {
-                if (userName.equals(entity.getUsername())) {
-                    return entity;
-                }
+        if (entities == null) {
+            entities = new FakeUserGenerator().deserialize();
+        }
+        for (UserDaoEntity entity : entities) {
+            if (userName.equals(entity.getUsername())) {
+                return entity;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return null;
     }
 
-    public void get(int id) {
-
+    public UserDaoEntity get(int id) {
+        if (entities == null) {
+            entities = new FakeUserGenerator().deserialize();
+        }
+        for (UserDaoEntity entity : entities) {
+            if (id == entity.getId()) {
+                return entity;
+            }
+        }
+        return null;
     }
 
     public UserDaoEntity create(UserDaoEntity entity) {

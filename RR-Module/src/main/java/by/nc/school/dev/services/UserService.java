@@ -8,20 +8,20 @@ import java.util.Map;
 
 public class UserService {
 
-    private Map<Integer, UserBuilder> userBuilders = new HashMap<Integer, UserBuilder>();
+    private Map<Integer, UserBuilder> userBuilders = new HashMap<>();
 
     public UserService() {
-        userBuilders.put(0, new StudentBuilder());
-        userBuilders.put(1, new TutorBuilder());
-        userBuilders.put(2, new DeanBuilder());
+        userBuilders.put(1, new StudentBuilder());
+        userBuilders.put(2, new TutorBuilder());
+        userBuilders.put(3, new DeanBuilder());
     }
 
     public User getUser(UserDaoEntity userDaoEntity) {
         int status = userDaoEntity.getStatus();
-        if (status > 2) {
+        if (status > 3 || status <= 0) {
             throw new UnsupportedOperationException("Invalid status");
         } else {
-            return userBuilders.get(status).createUser(userDaoEntity);
+            return userBuilders.get(status).build(userDaoEntity);
         }
     }
 }

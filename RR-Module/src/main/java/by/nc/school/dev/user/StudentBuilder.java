@@ -4,7 +4,7 @@ import by.nc.school.dev.dao.UserDaoEntity;
 
 public class StudentBuilder extends UserBuilder {
 
-    public User createUser(UserDaoEntity userDaoEntity) {
+    public User build(UserDaoEntity userDaoEntity) {
         return new Student(userDaoEntity.getUsername(),
                            userDaoEntity.getPassword(),
                            userDaoEntity.getFullName(),

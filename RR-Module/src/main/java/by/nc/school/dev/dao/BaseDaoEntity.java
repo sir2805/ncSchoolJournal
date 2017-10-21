@@ -10,6 +10,13 @@ abstract public class BaseDaoEntity implements Serializable {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "BaseDaoEntity{" +
+                "id=" + id +
+                '}';
+    }
+
     public int getId() {
         return id;
     }

@@ -4,5 +4,5 @@ import by.nc.school.dev.dao.UserDaoEntity;
 
 public abstract class UserBuilder {
 
-    public abstract User createUser(UserDaoEntity userDaoEntity);
+    public abstract User build(UserDaoEntity userDaoEntity);
 }

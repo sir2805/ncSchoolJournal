@@ -9,8 +9,8 @@
         <module name="RR-Module" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="RR-Module" target="1.5" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="RR-Module" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -19,6 +19,7 @@ public class ValidationService {
         } else {
             currentUser = new UserService().getUser(entity);
             System.out.println("validation successful. Welcome " + currentUser.getFullName());
+            System.out.println(currentUser);
         }
         return currentUser;
     }

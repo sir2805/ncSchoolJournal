@@ -13,6 +13,29 @@ public class Group {
     private List<Student> students;
     private Tutor curator;
 
+    public Group(int groupNumber, int groupId, List<Student> students, Tutor curator) {
+        this.groupNumber = groupNumber;
+        this.groupId = groupId;
+        this.students = students;
+        this.curator = curator;
+    }
+
+    public void setGroupNumber(int groupNumber) {
+        this.groupNumber = groupNumber;
+    }
+
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public void setCurator(Tutor curator) {
+        this.curator = curator;
+    }
+
     public int getGroupNumber() {
         return groupNumber;
     }

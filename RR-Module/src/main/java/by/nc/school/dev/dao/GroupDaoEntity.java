@@ -1,48 +1,39 @@
 package by.nc.school.dev.dao;
 
-import by.nc.school.dev.user.Student;
-import by.nc.school.dev.user.Tutor;
 
 import java.util.List;
 
 public class GroupDaoEntity extends BaseDaoEntity {
 
-    private List<Student> students;
-    private int groupId;
+    private List<Integer> students;
     private int groupNumber;
-    private Tutor curator;
+    private int curatorId;
 
-    public GroupDaoEntity(int id, List<Student> students, int groupId, int groupNumber, Tutor curator) {
+    public GroupDaoEntity(int id, List<Integer> students, int groupNumber, int curatorId) {
         super(id);
         this.students = students;
-        this.groupId = groupId;
         this.groupNumber = groupNumber;
-        this.curator = curator;
+        this.curatorId = curatorId;
     }
 
     @Override
     public String toString() {
-        return "GroupDaoEntity{" +
+        return super.toString() + "GroupDaoEntity{" +
                 "students=" + students +
-                ", groupId=" + groupId +
                 ", groupNumber=" + groupNumber +
-                ", curator=" + curator +
+                ", curatorId=" + curatorId +
                 '}';
     }
 
-    public List<Student> getStudents() {
+    public List<Integer> getStudentsIds() {
         return students;
-    }
-
-    public int getGroupId() {
-        return groupId;
     }
 
     public int getGroupNumber() {
         return groupNumber;
     }
 
-    public Tutor getCurator() {
-        return curator;
+    public int getCuratorId() {
+        return curatorId;
     }
 }
