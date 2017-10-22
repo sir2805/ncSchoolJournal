@@ -1,7 +1,9 @@
 package by.nc.school.dev.dao;
 
+import by.nc.school.dev.dao.entities.GroupDaoEntity;
 import by.nc.school.dev.data.FakeGroupGenerator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GroupDao extends BaseDao<GroupDaoEntity> {
@@ -18,6 +20,19 @@ public class GroupDao extends BaseDao<GroupDaoEntity> {
             }
         }
         return null;
+    }
+
+    public List<GroupDaoEntity> getGroupByGroupNumber(int groupNumber) {
+        if (entities == null) {
+            entities = new FakeGroupGenerator().deserialize();
+        }
+        List<GroupDaoEntity> result = new ArrayList<>();
+        for (GroupDaoEntity entity : entities) {
+            if (entity.getGroupNumber() == groupNumber) {
+                result.add(entity);
+            }
+        }
+        return result;
     }
 
     public GroupDaoEntity create(GroupDaoEntity entity) {

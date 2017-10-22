@@ -1,4 +1,4 @@
-package by.nc.school.dev.dao;
+package by.nc.school.dev.dao.entities;
 
 public class UserDaoEntity extends BaseDaoEntity {
 
@@ -6,15 +6,15 @@ public class UserDaoEntity extends BaseDaoEntity {
     private String password;
     private String fullName;
     private int status;
-    private int groupId;
+    private int groupNumber;
 
-    public UserDaoEntity(int id, String username, String password, String fullName, int status, int groupId) {
+    public UserDaoEntity(int id, String username, String password, String fullName, int status, int groupNumber) {
         super(id);
         this.username = username;
         this.password = password;
         this.fullName = fullName;
         this.status = status;
-        this.groupId = groupId;
+        this.groupNumber = groupNumber;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class UserDaoEntity extends BaseDaoEntity {
                 ", password='" + password + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", status=" + status +
-                ", groupId=" + groupId +
+                ", groupNumber=" + groupNumber +
                 '}';
     }
 
@@ -44,7 +44,7 @@ public class UserDaoEntity extends BaseDaoEntity {
         return status;
     }
 
-    public int getGroupId() {
-        return groupId;
+    public int getGroupNumber() {
+        return groupNumber;
     }
 }

@@ -1,18 +1,21 @@
 package by.nc.school.dev.dao;
 
+import by.nc.school.dev.Status;
+import by.nc.school.dev.dao.entities.UserDaoEntity;
 import by.nc.school.dev.data.FakeUserGenerator;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao extends BaseDao<UserDaoEntity> {
 
     private List<UserDaoEntity> entities;
 
-    public UserDaoEntity findUserByUserName(String userName) {
-        if (entities == null) {
-            entities = new FakeUserGenerator().deserialize();
-        }
+    public UserDao() {
+        this.entities = new FakeUserGenerator().deserialize();
+    }
+
+    public UserDaoEntity getUserByUserName(String userName) {
         for (UserDaoEntity entity : entities) {
             if (userName.equals(entity.getUsername())) {
                 return entity;
@@ -21,10 +24,17 @@ public class UserDao extends BaseDao<UserDaoEntity> {
         return null;
     }
 
-    public UserDaoEntity get(int id) {
-        if (entities == null) {
-            entities = new FakeUserGenerator().deserialize();
+    public List<UserDaoEntity> getTutors() {
+        List<UserDaoEntity> result = new ArrayList<>();
+        for (UserDaoEntity entity : entities) {
+            if (entity.getStatus() == Status.TUTOR) {
+                result.add(entity);
+            }
         }
+        return result;
+    }
+
+    public UserDaoEntity get(int id) {
         for (UserDaoEntity entity : entities) {
             if (id == entity.getId()) {
                 return entity;

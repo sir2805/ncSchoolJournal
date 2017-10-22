@@ -1,15 +1,17 @@
 package by.nc.school.dev.builders;
 
 import by.nc.school.dev.dao.entities.UserDaoEntity;
+import by.nc.school.dev.enitities.Curator;
 import by.nc.school.dev.enitities.Tutor;
 import by.nc.school.dev.enitities.User;
 
-public class TutorBuilder extends UserBuilder {
+public class CuratorBuilder extends UserBuilder {
 
     public User build(UserDaoEntity userDaoEntity) {
-        return new Tutor(userDaoEntity.getId(),
+        return new Curator(userDaoEntity.getId(),
                 userDaoEntity.getUsername(),
                 userDaoEntity.getPassword(),
-                userDaoEntity.getFullName());
+                userDaoEntity.getFullName(),
+                userDaoEntity.getGroupNumber());
     }
 }

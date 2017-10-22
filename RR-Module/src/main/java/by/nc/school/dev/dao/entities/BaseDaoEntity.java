@@ -1,4 +1,4 @@
-package by.nc.school.dev.dao;
+package by.nc.school.dev.dao.entities;
 
 import java.io.Serializable;
 

@@ -1,21 +1,18 @@
-package by.nc.school.dev;
+package by.nc.school.dev.enitities;
 
-import by.nc.school.dev.user.Student;
-import by.nc.school.dev.user.Tutor;
+import by.nc.school.dev.enitities.Student;
+import by.nc.school.dev.enitities.Tutor;
 
 import java.util.List;
-import java.util.Map;
 
 public class Group {
 
     private int groupNumber;
-    private int groupId;
     private List<Student> students;
-    private Tutor curator;
+    private Curator curator;
 
-    public Group(int groupNumber, int groupId, List<Student> students, Tutor curator) {
+    public Group(int groupNumber, List<Student> students, Curator curator) {
         this.groupNumber = groupNumber;
-        this.groupId = groupId;
         this.students = students;
         this.curator = curator;
     }
@@ -24,15 +21,11 @@ public class Group {
         this.groupNumber = groupNumber;
     }
 
-    public void setGroupId(int groupId) {
-        this.groupId = groupId;
-    }
-
     public void setStudents(List<Student> students) {
         this.students = students;
     }
 
-    public void setCurator(Tutor curator) {
+    public void setCurator(Curator curator) {
         this.curator = curator;
     }
 
@@ -40,9 +33,6 @@ public class Group {
         return groupNumber;
     }
 
-    public int getGroupId() {
-        return groupId;
-    }
 
     public List<Student> getStudents() {
         return students;
@@ -56,7 +46,6 @@ public class Group {
     public String toString() {
         return "Group{" +
                 "groupNumber=" + groupNumber +
-                ", groupId=" + groupId +
                 ", students=" + students +
                 ", curator=" + curator +
                 '}';

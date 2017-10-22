@@ -1,16 +1,15 @@
 package by.nc.school.dev.data;
 
-import by.nc.school.dev.dao.UserDaoEntity;
+import by.nc.school.dev.dao.entities.UserDaoEntity;
 
 import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class FakeUserGenerator {
+public class FakeUserGenerator extends AbstractFakeGenerator<UserDaoEntity> {
 
-    private final String filedir = "fakedb";
-    private final String filepath = filedir + File.separator + "fakeUserList.txt";
+    private final String filepath = filedir + File.separator + "fakeUsers.txt";
     private String[]logins = {
             "Patrice" ,
             "Collene" ,

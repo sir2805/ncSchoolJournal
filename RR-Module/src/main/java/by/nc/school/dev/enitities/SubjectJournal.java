@@ -1,7 +1,8 @@
-package by.nc.school.dev;
+package by.nc.school.dev.enitities;
 
-import by.nc.school.dev.user.Student;
-import by.nc.school.dev.user.Tutor;
+import by.nc.school.dev.enitities.Mark;
+import by.nc.school.dev.enitities.Student;
+import by.nc.school.dev.enitities.Tutor;
 
 import java.util.ArrayList;
 import java.util.HashMap;

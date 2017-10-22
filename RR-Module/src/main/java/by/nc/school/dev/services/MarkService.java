@@ -1,8 +1,6 @@
 package by.nc.school.dev.services;
 
-import by.nc.school.dev.*;
-import by.nc.school.dev.user.Student;
-import by.nc.school.dev.user.Tutor;
+import by.nc.school.dev.enitities.*;
 
 import java.util.List;
 import java.util.Map;

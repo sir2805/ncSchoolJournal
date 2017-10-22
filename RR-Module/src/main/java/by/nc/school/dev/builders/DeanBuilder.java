@@ -1,15 +1,15 @@
 package by.nc.school.dev.builders;
 
-import by.nc.school.dev.dao.UserDaoEntity;
-import by.nc.school.dev.user.Dean;
-import by.nc.school.dev.user.User;
+import by.nc.school.dev.dao.entities.UserDaoEntity;
+import by.nc.school.dev.enitities.Dean;
+import by.nc.school.dev.enitities.User;
 
 public class DeanBuilder extends UserBuilder {
 
     public User build(UserDaoEntity userDaoEntity) {
-        return new Dean(userDaoEntity.getUsername(),
+        return new Dean(userDaoEntity.getId(),
+                userDaoEntity.getUsername(),
                 userDaoEntity.getPassword(),
-                userDaoEntity.getFullName(),
-                userDaoEntity.getStatus());
+                userDaoEntity.getFullName());
     }
 }

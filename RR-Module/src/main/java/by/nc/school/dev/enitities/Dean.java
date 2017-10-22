@@ -1,9 +1,9 @@
-package by.nc.school.dev.user;
+package by.nc.school.dev.enitities;
 
 public class Dean extends User {
 
-    public Dean(String login, String password, String fullName, int status) {
-        super(login, password, fullName, status);
+    public Dean(int id, String login, String password, String fullName) {
+        super(id, login, password, fullName);
     }
 
     @Override
@@ -12,6 +12,7 @@ public class Dean extends User {
                 "login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", fullName='" + fullName + '\'' +
+                ", id=" + id +
                 '}';
     }
 }
