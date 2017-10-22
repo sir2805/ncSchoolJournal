@@ -9,8 +9,6 @@ import java.util.List;
 
 public class UserDao extends BaseDao<UserDaoEntity> {
 
-    private List<UserDaoEntity> entities;
-
     public UserDao() {
         this.entities = new FakeUserGenerator().deserialize();
     }
@@ -34,24 +32,17 @@ public class UserDao extends BaseDao<UserDaoEntity> {
         return result;
     }
 
-    public UserDaoEntity get(int id) {
-        for (UserDaoEntity entity : entities) {
-            if (id == entity.getId()) {
-                return entity;
-            }
-        }
+    public UserDaoEntity create(UserDaoEntity entity) {
         return null;
     }
 
-    public UserDaoEntity create(UserDaoEntity entity) {
-        return entity;
-    }
-
     public void update(UserDaoEntity entity) {
-
+        UserDaoEntity oldEntity = get(entity.getId());
+        entities.remove(oldEntity);
+        entities.add(entity);
     }
 
     public void delete(UserDaoEntity entity) {
-
+        entities.remove(entity);
     }
 }

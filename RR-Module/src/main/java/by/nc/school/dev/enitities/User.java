@@ -2,13 +2,13 @@ package by.nc.school.dev.enitities;
 
 public abstract class User extends BaseEnitity {
 
-    protected String login;
+    protected String username;
     protected String password;
     protected String fullName;
 
-    public User(int id, String login, String password, String fullName) {
+    public User(int id, String username, String password, String fullName) {
         super(id);
-        this.login = login;
+        this.username = username;
         this.password = password;
         this.fullName = fullName;
     }
@@ -16,7 +16,7 @@ public abstract class User extends BaseEnitity {
     @Override
     public String toString() {
         return "User{" +
-                "login='" + login + '\'' +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", id=" + id +
@@ -31,22 +31,34 @@ public abstract class User extends BaseEnitity {
         User user = (User) o;
 
         if (id != user.id) return false;
-        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (username != null ? !username.equals(user.username) : user.username != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         return fullName != null ? fullName.equals(user.fullName) : user.fullName == null;
     }
 
     @Override
     public int hashCode() {
-        int result = login != null ? login.hashCode() : 0;
+        int result = username != null ? username.hashCode() : 0;
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (fullName != null ? fullName.hashCode() : 0);
         result = 31 * result + id;
         return result;
     }
 
-    public String getLogin() {
-        return login;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {

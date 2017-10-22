@@ -1,30 +1,31 @@
 package by.nc.school.dev.services;
 
-import by.nc.school.dev.Status;
 import by.nc.school.dev.builders.*;
+import by.nc.school.dev.dao.DaoFactory;
+import by.nc.school.dev.dao.UserDao;
 import by.nc.school.dev.dao.entities.UserDaoEntity;
 import by.nc.school.dev.enitities.*;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class UserService {
 
-    private Map<Integer, UserBuilder> userBuilders = new HashMap<>();
+    public User getUser(UserDaoEntity userDaoEntity) {
 
-    public UserService() {
-        userBuilders.put(Status.STUDENT, new StudentBuilder());
-        userBuilders.put(Status.TUTOR, new TutorBuilder());
-        userBuilders.put(Status.CURATOR, new CuratorBuilder());
-        userBuilders.put(Status.DEAN, new DeanBuilder());
+        return new UserBuilder().build(userDaoEntity);
     }
 
-    public User getUser(UserDaoEntity userDaoEntity) {
-        int status = userDaoEntity.getStatus();
-        if (status > 4 || status <= 0) {
-            throw new UnsupportedOperationException("Invalid status");
-        } else {
-            return userBuilders.get(status).build(userDaoEntity);
-        }
+    public void changeUsername(User user, String newUsername) {
+        UserDao userDao = new DaoFactory().getUserDao();
+        UserDaoEntity entity = userDao.getUserByUserName(user.getUsername());
+        entity.setUsername(newUsername);
+        userDao.update(entity);
+        user.setUsername(newUsername);
+    }
+
+    public void changePassword(User user, String newPassword) {
+        UserDao userDao = new DaoFactory().getUserDao();
+        UserDaoEntity entity = userDao.getUserByUserName(user.getUsername());
+        entity.setPassword(newPassword);
+        userDao.update(entity);
     }
 }

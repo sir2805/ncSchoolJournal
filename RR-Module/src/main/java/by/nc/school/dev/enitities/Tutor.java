@@ -9,7 +9,7 @@ public class Tutor extends User {
     @Override
     public String toString() {
         return "Tutor{" +
-                ", login='" + login + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", id=" + id +

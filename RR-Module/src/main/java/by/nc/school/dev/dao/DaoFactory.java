@@ -1,12 +1,6 @@
 package by.nc.school.dev.dao;
 
-interface IDaoFactory {
-
-    UserDao getUserDao();
-    GroupDao getGroupDao();
-}
-
-public class DaoFactory implements IDaoFactory {
+public class DaoFactory {
 
     public UserDao getUserDao() {
         return new UserDao();
@@ -14,5 +8,17 @@ public class DaoFactory implements IDaoFactory {
 
     public GroupDao getGroupDao() {
         return new GroupDao();
+    }
+
+    public WorkPlanDao getWorkPlanDao() {
+        return new WorkPlanDao();
+    }
+
+    public SubjectDao getSubjectDao() {
+        return new SubjectDao();
+    }
+
+    public JournalDao getJournalDao() {
+        return new JournalDao();
     }
 }

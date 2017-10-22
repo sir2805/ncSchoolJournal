@@ -8,24 +8,11 @@ import java.util.List;
 
 public class GroupDao extends BaseDao<GroupDaoEntity> {
 
-    private List<GroupDaoEntity> entities;
-
-    public GroupDaoEntity get(int id) {
-        if (entities == null) {
-            entities = new FakeGroupGenerator().deserialize();
-        }
-        for (GroupDaoEntity entity : entities) {
-            if (entity.getId() == id) {
-                return entity;
-            }
-        }
-        return null;
+    public GroupDao() {
+        this.entities = new FakeGroupGenerator().deserialize();
     }
 
     public List<GroupDaoEntity> getGroupByGroupNumber(int groupNumber) {
-        if (entities == null) {
-            entities = new FakeGroupGenerator().deserialize();
-        }
         List<GroupDaoEntity> result = new ArrayList<>();
         for (GroupDaoEntity entity : entities) {
             if (entity.getGroupNumber() == groupNumber) {

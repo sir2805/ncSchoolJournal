@@ -1,5 +1,7 @@
 package by.nc.school.dev.builders;
 
+import by.nc.school.dev.dao.DaoFactory;
+import by.nc.school.dev.dao.GroupDao;
 import by.nc.school.dev.enitities.Curator;
 import by.nc.school.dev.enitities.Group;
 import by.nc.school.dev.dao.entities.GroupDaoEntity;
@@ -13,26 +15,13 @@ import java.util.List;
 
 public class GroupBuilder {
 
-    public Group build(int groupNumber, List<GroupDaoEntity> groupDaoEntities) {
-        UserDao userDao = new UserDao();
-        List<Student> students = new ArrayList<>();
-        StudentBuilder studentBuilder = new StudentBuilder();
-        Curator curator = null;
-        UserService userService = new UserService();
-        for (GroupDaoEntity groupDaoEntity : groupDaoEntities) {
-            if (groupDaoEntity.getGroupNumber() == groupNumber) {
-                if (curator == null) {
-                    curator = (Curator)userService.getUser(userDao.get(groupDaoEntity.getCuratorId()));
-                }
-                students.add((Student)studentBuilder.build(userDao.get(groupDaoEntity.getStudentsId())));
-            }
-        }
-
-        return new Group(groupNumber, students, curator);
+    public Group build(int groupNumber) {
+        List<GroupDaoEntity> entities = new GroupDao().getGroupByGroupNumber(groupNumber);
+        return build(entities);
     }
 
     public Group build(List<GroupDaoEntity> groupDaoEntities) {
-        UserDao userDao = new UserDao();
+        UserDao userDao = new DaoFactory().getUserDao();
         List<Student> students = new ArrayList<>();
         StudentBuilder studentBuilder = new StudentBuilder();
         Curator curator = null;

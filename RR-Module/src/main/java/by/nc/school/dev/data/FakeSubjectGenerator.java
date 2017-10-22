@@ -34,7 +34,9 @@ public class FakeSubjectGenerator extends AbstractFakeGenerator<SubjectDaoEntity
                     tutorsPos = 0;
                 }
                 SubjectDaoEntity subjectDaoEntity = new SubjectDaoEntity(id++, subjectName, tutors.get(tutorsPos++).getId());
+                oos.writeObject(subjectDaoEntity);
             }
+            oos.writeObject(null);
         } catch (IOException e) {
             e.printStackTrace();
         }

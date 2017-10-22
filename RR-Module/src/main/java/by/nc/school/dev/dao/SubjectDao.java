@@ -8,20 +8,12 @@ import java.util.List;
 
 public class SubjectDao extends BaseDao<SubjectDaoEntity> {
 
-    private List<SubjectDaoEntity> entities;
-
     public SubjectDao() {
         this.entities = new FakeSubjectGenerator().deserialize();
     }
 
-    @Override
-    public SubjectDaoEntity get(int id) {
-        for (SubjectDaoEntity entity : entities) {
-            if (id == entity.getId()) {
-                return entity;
-            }
-        }
-        return null;
+    public List<SubjectDaoEntity> getAllSubjects() {
+        return entities;
     }
 
     public List<SubjectDaoEntity> getSubjectsByTutorId(int tutorId) {

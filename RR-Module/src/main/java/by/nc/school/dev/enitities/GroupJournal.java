@@ -5,13 +5,13 @@ import java.util.Map;
 public class GroupJournal {
 
     private Group group;
-    private Map<Subject, SubjectJournal> journal;
+    private Map<Subject, GroupSubjectJournal> journal;
 
-    public Map<Subject, SubjectJournal> getJournal() {
+    public Map<Subject, GroupSubjectJournal> getJournal() {
         return journal;
     }
 
-    public GroupJournal(Group group, Map<Subject, SubjectJournal> journal) {
+    public GroupJournal(Group group, Map<Subject, GroupSubjectJournal> journal) {
         this.group = group;
         this.journal = journal;
     }
@@ -22,5 +22,9 @@ public class GroupJournal {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public void setJournal(Map<Subject, GroupSubjectJournal> journal) {
+        this.journal = journal;
     }
 }

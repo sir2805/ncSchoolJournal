@@ -3,9 +3,9 @@ package by.nc.school.dev.enitities;
 public class Mark {
 
     private int mark;
-    private int isExam;
+    private boolean isExam;
 
-    public Mark(int mark, int isExam) {
+    public Mark(int mark, boolean isExam) {
         this.mark = mark;
         this.isExam = isExam;
     }
@@ -32,7 +32,7 @@ public class Mark {
     @Override
     public int hashCode() {
         int result = mark;
-        result = 31 * result + isExam;
+        if (isExam) return mark * 31;
         return result;
     }
 
@@ -44,11 +44,11 @@ public class Mark {
         this.mark = mark;
     }
 
-    public int getIsExam() {
+    public boolean getIsExam() {
         return isExam;
     }
 
-    public void setIsExam(int isExam) {
+    public void setIsExam(boolean isExam) {
         this.isExam = isExam;
     }
 }

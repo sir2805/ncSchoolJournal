@@ -17,7 +17,7 @@ public class Curator extends Tutor {
     public String toString() {
         return "Curator{" +
                 "groupNumber=" + groupNumber +
-                ", login='" + login + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", id=" + id +

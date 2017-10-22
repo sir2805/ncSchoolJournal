@@ -1,6 +1,6 @@
 package by.nc.school.dev.builders;
 
-import by.nc.school.dev.dao.UserDao;
+import by.nc.school.dev.dao.DaoFactory;
 import by.nc.school.dev.dao.entities.SubjectDaoEntity;
 import by.nc.school.dev.dao.entities.UserDaoEntity;
 import by.nc.school.dev.enitities.Subject;
@@ -8,7 +8,7 @@ import by.nc.school.dev.enitities.Tutor;
 
 public class SubjectBuilder {
     public Subject build(SubjectDaoEntity subjectDaoEntity) {
-        UserDaoEntity tutorDaoEntity = new UserDao().get(subjectDaoEntity.getTutorId());
+        UserDaoEntity tutorDaoEntity = new DaoFactory().getUserDao().get(subjectDaoEntity.getTutorId());
         Tutor tutor = (Tutor) new TutorBuilder().build(tutorDaoEntity);
         return new Subject(subjectDaoEntity.getId(), subjectDaoEntity.getName(), tutor);
     }
