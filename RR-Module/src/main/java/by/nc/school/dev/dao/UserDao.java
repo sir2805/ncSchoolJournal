@@ -1,6 +1,6 @@
 package by.nc.school.dev.dao;
 
-import by.nc.school.dev.Status;
+import by.nc.school.dev.Role;
 import by.nc.school.dev.dao.entities.UserDaoEntity;
 import by.nc.school.dev.data.FakeUserGenerator;
 
@@ -22,10 +22,19 @@ public class UserDao extends BaseDao<UserDaoEntity> {
         return null;
     }
 
+    public UserDaoEntity getUserByFullName(String fullName) {
+        for (UserDaoEntity entity : entities) {
+            if (fullName.equals(entity.getFullName())) {
+                return entity;
+            }
+        }
+        return null;
+    }
+
     public List<UserDaoEntity> getTutors() {
         List<UserDaoEntity> result = new ArrayList<>();
         for (UserDaoEntity entity : entities) {
-            if (entity.getStatus() == Status.TUTOR) {
+            if (entity.getStatus() == Role.TUTOR || entity.getStatus() == Role.CURATOR) {
                 result.add(entity);
             }
         }

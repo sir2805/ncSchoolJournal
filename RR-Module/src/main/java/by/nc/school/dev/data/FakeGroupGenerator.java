@@ -1,5 +1,6 @@
 package by.nc.school.dev.data;
 
+import by.nc.school.dev.Role;
 import by.nc.school.dev.dao.entities.GroupDaoEntity;
 import by.nc.school.dev.dao.entities.UserDaoEntity;
 
@@ -8,8 +9,11 @@ import java.util.*;
 
 public class FakeGroupGenerator extends AbstractFakeGenerator<GroupDaoEntity>{
 
-    private final String filepath = filedir + File.separator + "fakeGroups.txt";
+    public FakeGroupGenerator() {
+        this.filepath = filedir + File.separator + "fakeGroups.txt";
+    }
 
+    @Override
     public void serialize() {
 
         List<UserDaoEntity> users = new FakeUserGenerator().deserialize();
@@ -20,7 +24,7 @@ public class FakeGroupGenerator extends AbstractFakeGenerator<GroupDaoEntity>{
             int curId = 1;
             Map<Integer, UserDaoEntity> tutors = new HashMap<>();
             for (UserDaoEntity entity : users) {
-                if (entity.getStatus() == 2) {
+                if (entity.getStatus() == Role.TUTOR || entity.getStatus() == Role.CURATOR) {
                     tutors.put(entity.getGroupNumber(), entity);
                 }
             }
@@ -38,19 +42,5 @@ public class FakeGroupGenerator extends AbstractFakeGenerator<GroupDaoEntity>{
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public List<GroupDaoEntity> deserialize() {
-        List<GroupDaoEntity> entities = new ArrayList<>();
-        try (FileInputStream fis = new FileInputStream(filepath);
-             ObjectInputStream ois = new ObjectInputStream(fis)) {
-            GroupDaoEntity groupDaoEntity;
-            while ((groupDaoEntity = (GroupDaoEntity) ois.readObject()) != null) {
-                entities.add(groupDaoEntity);
-            }
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return entities;
     }
 }

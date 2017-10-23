@@ -8,6 +8,7 @@ public class DeanBuilder extends AbstractUserBuilder {
 
     public User build(UserDaoEntity userDaoEntity) {
         return new Dean(userDaoEntity.getId(),
+                userDaoEntity.getStatus(),
                 userDaoEntity.getUsername(),
                 userDaoEntity.getPassword(),
                 userDaoEntity.getFullName());

@@ -8,6 +8,7 @@ public class TutorBuilder extends AbstractUserBuilder {
 
     public User build(UserDaoEntity userDaoEntity) {
         return new Tutor(userDaoEntity.getId(),
+                userDaoEntity.getStatus(),
                 userDaoEntity.getUsername(),
                 userDaoEntity.getPassword(),
                 userDaoEntity.getFullName());

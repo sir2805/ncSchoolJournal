@@ -1,6 +1,7 @@
 package by.nc.school.dev.services;
 
 import by.nc.school.dev.builders.SubjectBuilder;
+import by.nc.school.dev.builders.TutorBuilder;
 import by.nc.school.dev.dao.DaoFactory;
 import by.nc.school.dev.dao.SubjectDao;
 import by.nc.school.dev.dao.entities.SubjectDaoEntity;
@@ -21,6 +22,15 @@ public class SubjectService {
             result.add(subjectBuilder.build(entity));
         }
         return result;
+    }
+
+    public Subject getSubjectByName(String subjectName) {
+        SubjectDaoEntity subjectDaoEntity = new DaoFactory().getSubjectDao().getSubjectBySubjectName(subjectName);
+        if (subjectDaoEntity != null) {
+            Tutor tutor = (Tutor) new TutorBuilder().build(new DaoFactory().getUserDao().get(subjectDaoEntity.getId()));
+            return new Subject(subjectDaoEntity.getId(), subjectDaoEntity.getName(), tutor);
+        }
+        return null;
     }
 
     public List<Subject> getAllSubjects() {

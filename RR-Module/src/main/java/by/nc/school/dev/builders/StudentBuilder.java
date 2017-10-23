@@ -8,6 +8,7 @@ public class StudentBuilder extends AbstractUserBuilder {
 
     public User build(UserDaoEntity userDaoEntity) {
         return new Student(userDaoEntity.getId(),
+                userDaoEntity.getStatus(),
                 userDaoEntity.getUsername(),
                 userDaoEntity.getPassword(),
                 userDaoEntity.getFullName(),

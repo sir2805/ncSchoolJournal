@@ -1,15 +1,18 @@
 package by.nc.school.dev;
 
-import by.nc.school.dev.data.FakeGroupGenerator;
-import by.nc.school.dev.data.FakeSubjectGenerator;
-import by.nc.school.dev.data.FakeUserGenerator;
-import by.nc.school.dev.enitities.Subject;
-import by.nc.school.dev.enitities.Tutor;
-import by.nc.school.dev.enitities.User;
+import by.nc.school.dev.builders.GroupBuilder;
+import by.nc.school.dev.builders.GroupJournalBuilder;
+import by.nc.school.dev.builders.WorkPlanBuilder;
+import by.nc.school.dev.dao.DaoFactory;
+import by.nc.school.dev.data.*;
+import by.nc.school.dev.enitities.*;
+import by.nc.school.dev.services.GroupJournalService;
+import by.nc.school.dev.services.MarkService;
 import by.nc.school.dev.services.SubjectService;
 import by.nc.school.dev.services.UserService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,15 +20,30 @@ import java.util.Scanner;
 public class App {
 
     private static User currentUser;
+
     public static void main( String[] args ) throws IOException {
         new FakeUserGenerator().serialize();
         new FakeSubjectGenerator().serialize();
+        new FakeWorkPlanGenerator().serialize();
+        new TestJournalDb().serialize(new ArrayList<>());
         FakeGroupGenerator fakeGroupGenerator = new FakeGroupGenerator();
         fakeGroupGenerator.serialize();
         System.out.println(fakeGroupGenerator.deserialize());
         displaySubjects();
+        displayWorkPlan();
+        displayGroups();
+        testValidation();
+        putMarkTest();
+        System.out.println(new TestJournalDb().deserialize());
 //        testValidation();
 //        testUsernameChange();
+    }
+
+    private static void displayGroups() {
+        for (int i = 1; i <= 4; i++) {
+            GroupJournal groupJournal = new GroupJournalBuilder().build(i);
+            System.out.println(groupJournal);
+        }
     }
 
     private static void displaySubjects() {
@@ -33,6 +51,11 @@ public class App {
         for (Subject subject : subjects) {
             System.out.println(subject.getName() + "  " + subject.getTutor().getFullName());
         }
+    }
+
+    private static void displayWorkPlan() {
+        WorkPlan workPlan = new WorkPlanBuilder().build(new DaoFactory().getWorkPlanDao().getWorkPlan());
+        System.out.println(workPlan);
     }
 
     private static void testUsernameChange() {
@@ -58,5 +81,46 @@ public class App {
                 break;
             }
         }
+    }
+
+    private static void putMarkTest() {
+        Scanner sc = new Scanner(System.in);
+        Student student;
+        Subject subject;
+        Mark mark;
+        while (true) {
+            System.out.println("Input student");
+            String studentFullName = sc.nextLine();
+            student = (Student) new UserService().getUserByFullName(studentFullName);
+            if (student != null) {
+                break;
+            }
+        }
+
+        while (true) {
+            System.out.println("Input subject");
+            String subjectName = sc.nextLine();
+            subject = new SubjectService().getSubjectByName(subjectName);
+            if (subject != null) {
+                break;
+            }
+        }
+
+        System.out.println("Input mark ");
+        String markValueString = sc.nextLine();
+        System.out.println("should mark be exam? (Y/N)");
+        String isExam = sc.nextLine();
+        int markValue = Integer.valueOf(markValueString);
+        boolean isExamFlag;
+        if (isExam.equals("Y")) {
+            isExamFlag = true;
+        } else {
+            isExamFlag = false;
+        }
+
+        mark = new Mark(markValue, isExamFlag);
+        GroupJournal groupJournal = new GroupJournalBuilder().build(student.getGroupNumber());
+        new MarkService().putMark((Tutor) currentUser, mark, subject, student, groupJournal);
+
     }
 }

@@ -1,5 +1,6 @@
 package by.nc.school.dev.data;
 
+import by.nc.school.dev.Role;
 import by.nc.school.dev.dao.entities.UserDaoEntity;
 
 import java.io.*;
@@ -9,7 +10,6 @@ import java.util.Random;
 
 public class FakeUserGenerator extends AbstractFakeGenerator<UserDaoEntity> {
 
-    private final String filepath = filedir + File.separator + "fakeUsers.txt";
     private String[]logins = {
             "Patrice" ,
             "Collene" ,
@@ -64,6 +64,11 @@ public class FakeUserGenerator extends AbstractFakeGenerator<UserDaoEntity> {
             "aaa", "bbb", "ccc", "ddd", "admin", "roskach",
     };
 
+    public FakeUserGenerator() {
+        this.filepath = filedir + File.separator + "fakeUsers.txt";
+    }
+
+    @Override
     public void serialize() {
         try (FileOutputStream fos = new FileOutputStream(filepath);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
@@ -73,34 +78,34 @@ public class FakeUserGenerator extends AbstractFakeGenerator<UserDaoEntity> {
                 String password = login + "1";
                 String username = login + " Name";
                 int status = 1;
-                int groupId;
-                groupId = random.nextInt(4) + 1;
+                int groupNumber;
+                groupNumber = random.nextInt(4) + 1;
                 switch (login) {
                     case "admin":
                     case "roskach":
-                        status = 3;
-                        groupId = 0;
+                        status = Role.DEAN;
+                        groupNumber = 0;
                         break;
                     case "aaa":
-                        status = 2;
-                        groupId = 1;
+                        status = Role.CURATOR;
+                        groupNumber = 1;
                         break;
                     case "bbb":
-                        status = 2;
-                        groupId = 2;
+                        status = Role.CURATOR;
+                        groupNumber = 2;
 
                         break;
                     case "ccc":
-                        status = 2;
-                        groupId = 3;
+                        status = Role.CURATOR;
+                        groupNumber = 3;
 
                         break;
                     case "ddd":
-                        status = 2;
-                        groupId = 4;
+                        status = Role.CURATOR;
+                        groupNumber = 4;
                         break;
                 }
-                oos.writeObject(new UserDaoEntity(id, login, password, username, status, groupId));
+                oos.writeObject(new UserDaoEntity(id, login, password, username, status, groupNumber));
                 id++;
             }
             oos.writeObject(null);
@@ -108,20 +113,5 @@ public class FakeUserGenerator extends AbstractFakeGenerator<UserDaoEntity> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public List<UserDaoEntity> deserialize() {
-        try (FileInputStream fis = new FileInputStream(filepath);
-             ObjectInputStream ois = new ObjectInputStream(fis)) {
-            List<UserDaoEntity> entities = new LinkedList<>();
-            UserDaoEntity userDaoEntity;
-            while ((userDaoEntity = (UserDaoEntity) ois.readObject()) != null) {
-                entities.add(userDaoEntity);
-            }
-            return entities;
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

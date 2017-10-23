@@ -1,6 +1,6 @@
 package by.nc.school.dev.builders;
 
-import by.nc.school.dev.Status;
+import by.nc.school.dev.Role;
 import by.nc.school.dev.dao.entities.UserDaoEntity;
 import by.nc.school.dev.enitities.User;
 
@@ -21,9 +21,9 @@ public class UserBuilder extends AbstractUserBuilder {
     private Map<Integer, AbstractUserBuilder> userBuilders = new HashMap<>();
 
     public UserBuilder() {
-        userBuilders.put(Status.STUDENT, new StudentBuilder());
-        userBuilders.put(Status.TUTOR, new TutorBuilder());
-        userBuilders.put(Status.CURATOR, new CuratorBuilder());
-        userBuilders.put(Status.DEAN, new DeanBuilder());
+        userBuilders.put(Role.STUDENT, new StudentBuilder());
+        userBuilders.put(Role.TUTOR, new TutorBuilder());
+        userBuilders.put(Role.CURATOR, new CuratorBuilder());
+        userBuilders.put(Role.DEAN, new DeanBuilder());
     }
 }

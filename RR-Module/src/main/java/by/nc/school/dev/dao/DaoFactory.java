@@ -2,23 +2,44 @@ package by.nc.school.dev.dao;
 
 public class DaoFactory {
 
+    private static UserDao userDao;
+    private static GroupDao groupDao;
+    private static WorkPlanDao workPlanDao;
+    private static SubjectDao subjectDao;
+    private static JournalDao journalDao;
+
     public UserDao getUserDao() {
-        return new UserDao();
+        if (userDao == null) {
+            userDao = new UserDao();
+        }
+        return userDao;
     }
 
     public GroupDao getGroupDao() {
-        return new GroupDao();
+        if (groupDao == null) {
+            groupDao = new GroupDao();
+        }
+        return groupDao;
     }
 
     public WorkPlanDao getWorkPlanDao() {
-        return new WorkPlanDao();
+        if (workPlanDao == null) {
+            workPlanDao = new WorkPlanDao();
+        }
+        return workPlanDao;
     }
 
     public SubjectDao getSubjectDao() {
-        return new SubjectDao();
+        if (subjectDao == null) {
+            subjectDao = new SubjectDao();
+        }
+        return subjectDao;
     }
 
     public JournalDao getJournalDao() {
-        return new JournalDao();
+        if (journalDao == null) {
+            journalDao = new JournalDao();
+        }
+        return journalDao;
     }
 }

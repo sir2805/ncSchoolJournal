@@ -10,7 +10,6 @@ import java.util.List;
 
 public class FakeSubjectGenerator extends AbstractFakeGenerator<SubjectDaoEntity> {
 
-    private final String filepath = filedir + File.separator + "fakeSubjects.txt";
     private final String[] subjectNames = {
             "Remedial Math",
             "Fundamental Math or Basic Math",
@@ -21,6 +20,10 @@ public class FakeSubjectGenerator extends AbstractFakeGenerator<SubjectDaoEntity
             "Geometry",
             "Trigonometry",
             "Statistics"};
+
+    public FakeSubjectGenerator() {
+        this.filepath = filedir + File.separator + "fakeSubjects.txt";
+    }
 
     @Override
     public void serialize() {
@@ -40,21 +43,5 @@ public class FakeSubjectGenerator extends AbstractFakeGenerator<SubjectDaoEntity
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public List<SubjectDaoEntity> deserialize() {
-        try (FileInputStream fis = new FileInputStream(filepath);
-             ObjectInputStream ois = new ObjectInputStream(fis)) {
-            List<SubjectDaoEntity> entities = new LinkedList<>();
-            SubjectDaoEntity subjectDaoEntity;
-            while ((subjectDaoEntity = (SubjectDaoEntity) ois.readObject()) != null) {
-                entities.add(subjectDaoEntity);
-            }
-            return entities;
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

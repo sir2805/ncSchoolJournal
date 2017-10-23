@@ -12,4 +12,11 @@ public class SubjectBuilder {
         Tutor tutor = (Tutor) new TutorBuilder().build(tutorDaoEntity);
         return new Subject(subjectDaoEntity.getId(), subjectDaoEntity.getName(), tutor);
     }
+
+    public Subject build(String subjectName) {
+        SubjectDaoEntity subjectDaoEntity = new DaoFactory().getSubjectDao().getSubjectBySubjectName(subjectName);
+        UserDaoEntity tutorDaoEntity = new DaoFactory().getUserDao().get(subjectDaoEntity.getTutorId());
+        Tutor tutor = (Tutor) new TutorBuilder().build(tutorDaoEntity);
+        return new Subject(subjectDaoEntity.getId(), subjectDaoEntity.getName(), tutor);
+    }
 }

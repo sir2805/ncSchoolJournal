@@ -14,6 +14,12 @@ public class UserService {
         return new UserBuilder().build(userDaoEntity);
     }
 
+    public User getUserByFullName(String fullName) {
+
+        UserDaoEntity userDaoEntity = new DaoFactory().getUserDao().getUserByFullName(fullName);
+        return new UserBuilder().build(userDaoEntity);
+    }
+
     public void changeUsername(User user, String newUsername) {
         UserDao userDao = new DaoFactory().getUserDao();
         UserDaoEntity entity = userDao.getUserByUserName(user.getUsername());

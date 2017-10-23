@@ -5,10 +5,7 @@ import by.nc.school.dev.dao.DaoFactory;
 import by.nc.school.dev.dao.SubjectDao;
 import by.nc.school.dev.dao.WorkPlanDao;
 import by.nc.school.dev.dao.entities.WorkPlanDaoEntity;
-import by.nc.school.dev.enitities.GroupSubjectJournal;
-import by.nc.school.dev.enitities.Mark;
-import by.nc.school.dev.enitities.Student;
-import by.nc.school.dev.enitities.Subject;
+import by.nc.school.dev.enitities.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +25,14 @@ public class GroupJournalService {
         return result;
     }
 
-    public void putMark(GroupSubjectJournal groupSubjectJournal, Student student, Mark mark) {
-        if (!groupSubjectJournal.getMarksList().containsKey(student)) {
-            groupSubjectJournal.getMarksList().put(student, new ArrayList<>());
-        }
-        groupSubjectJournal.getMarksList().get(student).add(mark);
+    public GroupSubjectJournal getGroupSubjectJournal(GroupJournal groupJournal, Subject subject) {
+        return groupJournal.getJournal().get(subject);
     }
+//
+//    public void putMark(GroupSubjectJournal groupSubjectJournal, Student student, Mark mark) {
+//        if (!groupSubjectJournal.getMarksList().containsKey(student)) {
+//            groupSubjectJournal.getMarksList().put(student, new ArrayList<>());
+//        }
+//        groupSubjectJournal.getMarksList().get(student).add(mark);
+//    }
 }

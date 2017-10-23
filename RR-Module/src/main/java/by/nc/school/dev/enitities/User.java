@@ -5,9 +5,11 @@ public abstract class User extends BaseEnitity {
     protected String username;
     protected String password;
     protected String fullName;
+    protected int userRole;
 
-    public User(int id, String username, String password, String fullName) {
+    public User(int id, int userRole, String username, String password, String fullName) {
         super(id);
+        this.userRole = userRole;
         this.username = username;
         this.password = password;
         this.fullName = fullName;
@@ -43,6 +45,10 @@ public abstract class User extends BaseEnitity {
         result = 31 * result + (fullName != null ? fullName.hashCode() : 0);
         result = 31 * result + id;
         return result;
+    }
+
+    public int getUserRole() {
+        return userRole;
     }
 
     public void setUsername(String username) {

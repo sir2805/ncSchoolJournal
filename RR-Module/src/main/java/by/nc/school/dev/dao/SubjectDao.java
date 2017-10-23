@@ -26,6 +26,15 @@ public class SubjectDao extends BaseDao<SubjectDaoEntity> {
         return result;
     }
 
+    public SubjectDaoEntity getSubjectBySubjectName(String subjectName) {
+        for (SubjectDaoEntity entity : entities) {
+            if (entity.getName().equals(subjectName)) {
+                return entity;
+            }
+        }
+        return null;
+    }
+
     @Override
     public SubjectDaoEntity create(SubjectDaoEntity entity) {
         return null;

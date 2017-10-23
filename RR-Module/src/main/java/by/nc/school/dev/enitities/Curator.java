@@ -4,8 +4,8 @@ public class Curator extends Tutor {
 
     private int groupNumber;
 
-    public Curator(int id, String login, String password, String fullName, int groupNumber) {
-        super(id, login, password, fullName);
+    public Curator(int id, int userRole, String login, String password, String fullName, int groupNumber) {
+        super(id, userRole, login, password, fullName);
         this.groupNumber = groupNumber;
     }
 

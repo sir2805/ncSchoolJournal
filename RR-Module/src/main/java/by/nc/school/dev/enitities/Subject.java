@@ -11,6 +11,15 @@ public class Subject extends BaseEnitity {
         this.tutor = tutor;
     }
 
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "name='" + name + '\'' +
+                ", tutor=" + tutor +
+                ", id=" + id +
+                '}';
+    }
+
     public String getName() {
         return name;
     }

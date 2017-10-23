@@ -16,6 +16,14 @@ public class GroupJournal {
         this.journal = journal;
     }
 
+    @Override
+    public String toString() {
+        return "GroupJournal{" +
+                "group=" + group +
+                ", journal=" + journal +
+                '}';
+    }
+
     public Group getGroup() {
         return group;
     }

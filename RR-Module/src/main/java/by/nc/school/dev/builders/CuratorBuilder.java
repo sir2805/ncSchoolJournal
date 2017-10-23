@@ -9,6 +9,7 @@ public class CuratorBuilder extends AbstractUserBuilder {
 
     public User build(UserDaoEntity userDaoEntity) {
         return new Curator(userDaoEntity.getId(),
+                userDaoEntity.getStatus(),
                 userDaoEntity.getUsername(),
                 userDaoEntity.getPassword(),
                 userDaoEntity.getFullName(),
