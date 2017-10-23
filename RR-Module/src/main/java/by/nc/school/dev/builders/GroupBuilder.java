@@ -8,6 +8,7 @@ import by.nc.school.dev.dao.entities.GroupDaoEntity;
 import by.nc.school.dev.dao.UserDao;
 import by.nc.school.dev.enitities.Student;
 import by.nc.school.dev.enitities.Tutor;
+import by.nc.school.dev.services.ServiceFactory;
 import by.nc.school.dev.services.UserService;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class GroupBuilder {
         StudentBuilder studentBuilder = new StudentBuilder();
         Curator curator = null;
         int groupNumber = 0;
-        UserService userService = new UserService();
+        UserService userService = new ServiceFactory().getUserService();
         for (GroupDaoEntity groupDaoEntity : groupDaoEntities) {
             if (curator == null) {
                 curator = (Curator)userService.getUser(userDao.get(groupDaoEntity.getCuratorId()));

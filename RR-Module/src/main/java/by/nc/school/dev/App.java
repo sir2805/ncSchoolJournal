@@ -6,10 +6,7 @@ import by.nc.school.dev.builders.WorkPlanBuilder;
 import by.nc.school.dev.dao.DaoFactory;
 import by.nc.school.dev.data.*;
 import by.nc.school.dev.enitities.*;
-import by.nc.school.dev.services.GroupJournalService;
-import by.nc.school.dev.services.MarkService;
-import by.nc.school.dev.services.SubjectService;
-import by.nc.school.dev.services.UserService;
+import by.nc.school.dev.services.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,22 +44,24 @@ public class App {
     }
 
     private static void displaySubjects() {
-        List<Subject> subjects = new SubjectService().getAllSubjects();
+        List<Subject> subjects = new ServiceFactory().getSubjectService().getAllSubjects();
         for (Subject subject : subjects) {
             System.out.println(subject.getName() + "  " + subject.getTutor().getFullName());
         }
     }
 
     private static void displayWorkPlan() {
-        WorkPlan workPlan = new WorkPlanBuilder().build(new DaoFactory().getWorkPlanDao().getWorkPlan());
-        System.out.println(workPlan);
+        for (int i = 1; i <= 4; i++) {
+            WorkPlan workPlan = new WorkPlanBuilder().build(new DaoFactory().getWorkPlanDao().getWorkPlanForGroup(i));
+            System.out.println(workPlan);
+        }
     }
 
     private static void testUsernameChange() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Input new username ");
         String newUsername = sc.nextLine();
-        UserService userService = new UserService();
+        UserService userService = new ServiceFactory().getUserService();
         userService.changeUsername(currentUser, newUsername);
         System.out.println(currentUser);
     }
@@ -91,7 +90,7 @@ public class App {
         while (true) {
             System.out.println("Input student");
             String studentFullName = sc.nextLine();
-            student = (Student) new UserService().getUserByFullName(studentFullName);
+            student = (Student) new ServiceFactory().getUserService().getUserByFullName(studentFullName);
             if (student != null) {
                 break;
             }
@@ -100,7 +99,7 @@ public class App {
         while (true) {
             System.out.println("Input subject");
             String subjectName = sc.nextLine();
-            subject = new SubjectService().getSubjectByName(subjectName);
+            subject = new ServiceFactory().getSubjectService().getSubjectByName(subjectName);
             if (subject != null) {
                 break;
             }
@@ -120,7 +119,6 @@ public class App {
 
         mark = new Mark(markValue, isExamFlag);
         GroupJournal groupJournal = new GroupJournalBuilder().build(student.getGroupNumber());
-        new MarkService().putMark((Tutor) currentUser, mark, subject, student, groupJournal);
-
+        new ServiceFactory().getMarkService().putMark((Tutor) currentUser, mark, subject, student, groupJournal);
     }
 }

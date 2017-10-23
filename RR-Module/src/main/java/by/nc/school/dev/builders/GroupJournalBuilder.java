@@ -7,6 +7,7 @@ import by.nc.school.dev.dao.UserDao;
 import by.nc.school.dev.dao.entities.JournalDaoEntity;
 import by.nc.school.dev.enitities.*;
 import by.nc.school.dev.services.GroupJournalService;
+import by.nc.school.dev.services.ServiceFactory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +21,7 @@ public class GroupJournalBuilder {
         UserDao userDao = daoFactory.getUserDao();
         SubjectDao subjectDao = daoFactory.getSubjectDao();
         SubjectBuilder subjectBuilder = new SubjectBuilder();
-        GroupJournalService groupJournalService = new GroupJournalService();
+        GroupJournalService groupJournalService = new ServiceFactory().getGroupJournalService();
 
         List<JournalDaoEntity> journalForGroup = journalDao.getJournalForGroup(groupNumber);
         List<Subject> groupSubjects = groupJournalService.getSubjectsForGroup(groupNumber);

@@ -10,6 +10,9 @@ import java.util.Map;
 public class UserBuilder extends AbstractUserBuilder {
 
     public User build(UserDaoEntity userDaoEntity) {
+        if (userDaoEntity == null) {
+            return null;
+        }
         int status = userDaoEntity.getStatus();
         if (status > 4 || status <= 0) {
             throw new UnsupportedOperationException("Invalid status");

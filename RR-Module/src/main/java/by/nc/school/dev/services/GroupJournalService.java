@@ -28,11 +28,11 @@ public class GroupJournalService {
     public GroupSubjectJournal getGroupSubjectJournal(GroupJournal groupJournal, Subject subject) {
         return groupJournal.getJournal().get(subject);
     }
-//
-//    public void putMark(GroupSubjectJournal groupSubjectJournal, Student student, Mark mark) {
-//        if (!groupSubjectJournal.getMarksList().containsKey(student)) {
-//            groupSubjectJournal.getMarksList().put(student, new ArrayList<>());
-//        }
-//        groupSubjectJournal.getMarksList().get(student).add(mark);
-//    }
+
+    public void putMark(GroupSubjectJournal groupSubjectJournal, Student student, Mark mark) {
+        if (!groupSubjectJournal.getMarksList().containsKey(student)) {
+            groupSubjectJournal.getMarksList().put(student, new ArrayList<>());
+        }
+        groupSubjectJournal.getMarksList().get(student).add(mark);
+    }
 }

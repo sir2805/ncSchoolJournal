@@ -17,7 +17,7 @@ public class ValidationService {
         } else if (!entity.getPassword().equals(password)) {
             System.out.println("incorrect password");
         } else {
-            currentUser = new UserService().getUser(entity);
+            currentUser = new ServiceFactory().getUserService().getUser(entity);
             System.out.println("validation successful. Welcome " + currentUser.getFullName());
             System.out.println(currentUser);
         }
