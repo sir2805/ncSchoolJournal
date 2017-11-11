@@ -2,12 +2,13 @@ package by.nc.school.dev.enitities;
 
 import java.util.Map;
 
-public class GroupJournal {
+public class GroupJournal extends BaseEnitity {
 
     private Map<Semester, GroupSemesterJournal>groupJournal;
     private Group group;
 
-    public GroupJournal(Map<Semester, GroupSemesterJournal> groupJournal, Group group) {
+    public GroupJournal(int id, Map<Semester, GroupSemesterJournal> groupJournal, Group group) {
+        super(id);
         this.groupJournal = groupJournal;
         this.group = group;
     }

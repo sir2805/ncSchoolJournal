@@ -2,23 +2,24 @@ package by.nc.school.dev.dao;
 
 import by.nc.school.dev.dao.entities.SubjectDaoEntity;
 import by.nc.school.dev.data.FakeSubjectGenerator;
+import by.nc.school.dev.enitities.Subject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubjectDao extends BaseDao<SubjectDaoEntity> {
+public class SubjectDao extends BaseDao<Subject> {
 
     public SubjectDao() {
         this.entities = new FakeSubjectGenerator().deserialize();
     }
 
-    public List<SubjectDaoEntity> getAllSubjects() {
+    public List<Subject> getAllSubjects() {
         return entities;
     }
 
-    public List<SubjectDaoEntity> getSubjectsByTutorId(int tutorId) {
-        List<SubjectDaoEntity>result = new ArrayList<>();
-        for (SubjectDaoEntity entity : entities) {
+    public List<Subject> getSubjectsByTutorId(int tutorId) {
+        List<Subject>result = new ArrayList<>();
+        for (Subject entity : entities) {
             if (entity.getTutorId() == tutorId) {
                 result.add(entity);
             }
@@ -26,7 +27,7 @@ public class SubjectDao extends BaseDao<SubjectDaoEntity> {
         return result;
     }
 
-    public SubjectDaoEntity getSubjectBySubjectName(String subjectName) {
+    public Subject getSubjectBySubjectName(String subjectName) {
         for (SubjectDaoEntity entity : entities) {
             if (entity.getName().equals(subjectName)) {
                 return entity;
@@ -36,17 +37,17 @@ public class SubjectDao extends BaseDao<SubjectDaoEntity> {
     }
 
     @Override
-    public SubjectDaoEntity create(SubjectDaoEntity entity) {
+    public Subject create(Subject entity) {
         return null;
     }
 
     @Override
-    public void update(SubjectDaoEntity entity) {
+    public void update(Subject entity) {
 
     }
 
     @Override
-    public void delete(SubjectDaoEntity entity) {
+    public void delete(Subject entity) {
 
     }
 }

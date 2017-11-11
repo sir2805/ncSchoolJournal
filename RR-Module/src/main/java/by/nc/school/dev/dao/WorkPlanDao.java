@@ -2,36 +2,37 @@ package by.nc.school.dev.dao;
 
 import by.nc.school.dev.dao.entities.WorkPlanDaoEntity;
 import by.nc.school.dev.data.FakeWorkPlanGenerator;
+import by.nc.school.dev.enitities.WorkPlan;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WorkPlanDao extends BaseDao<WorkPlanDaoEntity> {
+public class WorkPlanDao extends BaseDao<WorkPlan> {
 
     public WorkPlanDao() {
         entities = new FakeWorkPlanGenerator().deserialize();
     }
 
-    public List<WorkPlanDaoEntity> getWorkPlanForGroup(int groupNumber) {
+    public List<WorkPlan> getWorkPlanForGroup(int groupNumber) {
         return entities.stream().filter(entity -> entity.getGroupNumber() == groupNumber).collect(Collectors.toList());
     }
 
-    public List<WorkPlanDaoEntity> getWorkPlan() {
+    public List<WorkPlan> getWorkPlan() {
         return entities;
     }
 
     @Override
-    public WorkPlanDaoEntity create(WorkPlanDaoEntity entity) {
+    public WorkPlan create(WorkPlan entity) {
         return null;
     }
 
     @Override
-    public void update(WorkPlanDaoEntity entity) {
+    public void update(WorkPlan entity) {
 
     }
 
     @Override
-    public void delete(WorkPlanDaoEntity entity) {
+    public void delete(WorkPlan entity) {
 
     }
 }

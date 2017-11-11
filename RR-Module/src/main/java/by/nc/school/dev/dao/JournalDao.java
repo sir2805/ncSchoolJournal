@@ -2,12 +2,13 @@ package by.nc.school.dev.dao;
 
 import by.nc.school.dev.dao.entities.JournalDaoEntity;
 import by.nc.school.dev.data.TestJournalDb;
+import by.nc.school.dev.enitities.GroupJournal;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class JournalDao extends BaseDao<JournalDaoEntity> {
+public class JournalDao extends BaseDao<GroupJournal> {
 
     private TestJournalDb testJournalDb;
 
@@ -16,7 +17,7 @@ public class JournalDao extends BaseDao<JournalDaoEntity> {
         entities = testJournalDb.deserialize();
     }
 
-    public List<JournalDaoEntity> getJournalForGroup(int groupNumber) {
+    public GroupJournal getJournalForGroup(int groupNumber) {
 //        List<JournalDaoEntity> result = new ArrayList<>();
         UserDao userDao = new DaoFactory().getUserDao();
 //        for (JournalDaoEntity entity : entities) {
@@ -29,19 +30,19 @@ public class JournalDao extends BaseDao<JournalDaoEntity> {
     }
 
     @Override
-    public JournalDaoEntity create(JournalDaoEntity entity) {
+    public GroupJournal create(GroupJournal entity) {
         entities.add(entity);
         testJournalDb.serialize(entities);
         return entity;
     }
 
     @Override
-    public void update(JournalDaoEntity entity) {
+    public void update(GroupJournal entity) {
 
     }
 
     @Override
-    public void delete(JournalDaoEntity entity) {
+    public void delete(GroupJournal entity) {
 
     }
 }

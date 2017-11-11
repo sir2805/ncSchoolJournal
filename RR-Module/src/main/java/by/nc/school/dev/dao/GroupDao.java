@@ -2,35 +2,36 @@ package by.nc.school.dev.dao;
 
 import by.nc.school.dev.dao.entities.GroupDaoEntity;
 import by.nc.school.dev.data.FakeGroupGenerator;
+import by.nc.school.dev.enitities.Group;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GroupDao extends BaseDao<GroupDaoEntity> {
+public class GroupDao extends BaseDao<Group> {
 
     public GroupDao() {
         this.entities = new FakeGroupGenerator().deserialize();
     }
 
-    public List<GroupDaoEntity> getGroupByGroupNumber(int groupNumber) {
-        List<GroupDaoEntity> result = new ArrayList<>();
-        for (GroupDaoEntity entity : entities) {
-            if (entity.getGroupNumber() == groupNumber) {
-                result.add(entity);
-            }
-        }
-        return result;
-    }
-
-    public GroupDaoEntity create(GroupDaoEntity entity) {
+    public Group getGroupByGroupNumber(int groupNumber) {
+//        List<GroupDaoEntity> result = new ArrayList<>();
+//        for (GroupDaoEntity entity : entities) {
+//            if (entity.getGroupNumber() == groupNumber) {
+//                result.add(entity);
+//            }
+//        }
         return null;
     }
 
-    public void update(GroupDaoEntity entity) {
+    public Group create(Group entity) {
+        return null;
+    }
+
+    public void update(Group entity) {
 
     }
 
-    public void delete(GroupDaoEntity entity) {
+    public void delete(Group entity) {
 
     }
 }

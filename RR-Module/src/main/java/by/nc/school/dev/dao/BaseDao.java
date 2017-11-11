@@ -1,11 +1,11 @@
 package by.nc.school.dev.dao;
 
-import by.nc.school.dev.dao.entities.BaseDaoEntity;
+import by.nc.school.dev.enitities.BaseEnitity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class BaseDao<T extends BaseDaoEntity> implements IDao<T> {
+abstract class BaseDao<T extends BaseEnitity> implements IDao<T> {
 
     protected List<T> entities;
 

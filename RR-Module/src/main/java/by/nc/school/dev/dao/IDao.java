@@ -1,8 +1,8 @@
 package by.nc.school.dev.dao;
 
-import by.nc.school.dev.dao.entities.BaseDaoEntity;
+import by.nc.school.dev.enitities.BaseEnitity;
 
-interface IDao<T extends BaseDaoEntity> {
+interface IDao<T extends BaseEnitity> {
 
     T get(int id);
     T create(T entity);

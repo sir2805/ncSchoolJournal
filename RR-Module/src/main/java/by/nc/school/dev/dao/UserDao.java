@@ -3,17 +3,18 @@ package by.nc.school.dev.dao;
 import by.nc.school.dev.Role;
 import by.nc.school.dev.dao.entities.UserDaoEntity;
 import by.nc.school.dev.data.FakeUserGenerator;
+import by.nc.school.dev.enitities.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDao extends BaseDao<UserDaoEntity> {
+public class UserDao extends BaseDao<User> {
 
     public UserDao() {
         this.entities = new FakeUserGenerator().deserialize();
     }
 
-    public UserDaoEntity getUserByUserName(String userName) {
+    public User getUserByUserName(String userName) {
         for (UserDaoEntity entity : entities) {
             if (userName.equals(entity.getUsername())) {
                 return entity;
@@ -22,7 +23,7 @@ public class UserDao extends BaseDao<UserDaoEntity> {
         return null;
     }
 
-    public UserDaoEntity getUserByFullName(String fullName) {
+    public User getUserByFullName(String fullName) {
         for (UserDaoEntity entity : entities) {
             if (fullName.equals(entity.getFullName())) {
                 return entity;
@@ -31,7 +32,7 @@ public class UserDao extends BaseDao<UserDaoEntity> {
         return null;
     }
 
-    public List<UserDaoEntity> getTutors() {
+    public List<User> getTutors() {
         List<UserDaoEntity> result = new ArrayList<>();
         for (UserDaoEntity entity : entities) {
             if (entity.getStatus() == Role.TUTOR || entity.getStatus() == Role.CURATOR) {
@@ -41,17 +42,17 @@ public class UserDao extends BaseDao<UserDaoEntity> {
         return result;
     }
 
-    public UserDaoEntity create(UserDaoEntity entity) {
+    public User create(User entity) {
         return null;
     }
 
-    public void update(UserDaoEntity entity) {
+    public void update(User entity) {
         UserDaoEntity oldEntity = get(entity.getId());
         entities.remove(oldEntity);
         entities.add(entity);
     }
 
-    public void delete(UserDaoEntity entity) {
+    public void delete(User entity) {
         entities.remove(entity);
     }
 }

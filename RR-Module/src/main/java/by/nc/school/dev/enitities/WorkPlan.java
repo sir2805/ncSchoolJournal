@@ -3,12 +3,13 @@ package by.nc.school.dev.enitities;
 import java.util.List;
 import java.util.Map;
 
-public class WorkPlan {
+public class WorkPlan extends BaseEnitity {
 
     private Map<Integer, List<Subject>> plan;
     private Semester semester;
 
-    public WorkPlan(Map<Integer, List<Subject>> plan, Semester semester) {
+    public WorkPlan(int id, Map<Integer, List<Subject>> plan, Semester semester) {
+        super(id);
         this.plan = plan;
         this.semester = semester;
     }

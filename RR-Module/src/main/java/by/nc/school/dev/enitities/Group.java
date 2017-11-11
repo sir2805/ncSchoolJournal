@@ -5,14 +5,15 @@ import by.nc.school.dev.enitities.Tutor;
 
 import java.util.List;
 
-public class Group {
+public class Group extends BaseEnitity {
 
     private int groupNumber;
     private List<Student> students;
     private Curator curator;
     private Semester currentSemester;
 
-    public Group(int groupNumber, List<Student> students, Curator curator, Semester currentSemester) {
+    public Group(int id, int groupNumber, List<Student> students, Curator curator, Semester currentSemester) {
+        super(id);
         this.groupNumber = groupNumber;
         this.students = students;
         this.curator = curator;
