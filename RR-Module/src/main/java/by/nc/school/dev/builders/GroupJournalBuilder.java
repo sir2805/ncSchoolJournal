@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class GroupJournalBuilder {
 
-    public GroupJournal build(int groupNumber) {
+    public GroupSemesterJournal build(int groupNumber) {
         final DaoFactory daoFactory = new DaoFactory();
         JournalDao journalDao = daoFactory.getJournalDao();
         UserDao userDao = daoFactory.getUserDao();
@@ -46,6 +46,6 @@ public class GroupJournalBuilder {
         }
 
         Group group = new GroupBuilder().build(groupNumber);
-        return new GroupJournal(group, journal);
+        return new GroupSemesterJournal(group, journal);
     }
 }

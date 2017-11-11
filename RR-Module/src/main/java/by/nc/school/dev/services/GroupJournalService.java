@@ -25,8 +25,8 @@ public class GroupJournalService {
         return result;
     }
 
-    public GroupSubjectJournal getGroupSubjectJournal(GroupJournal groupJournal, Subject subject) {
-        return groupJournal.getJournal().get(subject);
+    public GroupSubjectJournal getGroupSubjectJournal(GroupSemesterJournal groupSemesterJournal, Subject subject) {
+        return groupSemesterJournal.getJournal().get(subject);
     }
 
     public void putMark(GroupSubjectJournal groupSubjectJournal, Student student, Mark mark) {

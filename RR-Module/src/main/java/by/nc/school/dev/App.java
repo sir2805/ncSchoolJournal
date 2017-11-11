@@ -1,6 +1,5 @@
 package by.nc.school.dev;
 
-import by.nc.school.dev.builders.GroupBuilder;
 import by.nc.school.dev.builders.GroupJournalBuilder;
 import by.nc.school.dev.builders.WorkPlanBuilder;
 import by.nc.school.dev.dao.DaoFactory;
@@ -38,8 +37,8 @@ public class App {
 
     private static void displayGroups() {
         for (int i = 1; i <= 4; i++) {
-            GroupJournal groupJournal = new GroupJournalBuilder().build(i);
-            System.out.println(groupJournal);
+            GroupSemesterJournal groupSemesterJournal = new GroupJournalBuilder().build(i);
+            System.out.println(groupSemesterJournal);
         }
     }
 
@@ -118,7 +117,7 @@ public class App {
         }
 
         mark = new Mark(markValue, isExamFlag);
-        GroupJournal groupJournal = new GroupJournalBuilder().build(student.getGroupNumber());
-        new ServiceFactory().getMarkService().putMark((Tutor) currentUser, mark, subject, student, groupJournal);
+        GroupSemesterJournal groupSemesterJournal = new GroupJournalBuilder().build(student.getGroupNumber());
+        new ServiceFactory().getMarkService().putMark((Tutor) currentUser, mark, subject, student, groupSemesterJournal);
     }
 }

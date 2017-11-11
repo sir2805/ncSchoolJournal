@@ -12,13 +12,13 @@ import java.util.Map;
 
 public class MarkService {
 
-    public List<Mark> getMarks(Student student, Subject subject, GroupJournal groupJournal) {
-        Map<Subject, GroupSubjectJournal> journal = groupJournal.getJournal();
+    public List<Mark> getMarks(Student student, Subject subject, GroupSemesterJournal groupSemesterJournal) {
+        Map<Subject, GroupSubjectJournal> journal = groupSemesterJournal.getJournal();
         return journal.get(subject).getStudentMarks(student);
     }
 
-    public Mark getExamMark(Student student, Subject subject, GroupJournal groupJournal) {
-        List<Mark>marks = getMarks(student, subject, groupJournal);
+    public Mark getExamMark(Student student, Subject subject, GroupSemesterJournal groupSemesterJournal) {
+        List<Mark>marks = getMarks(student, subject, groupSemesterJournal);
         for (Mark mark : marks) {
             if (mark.getIsExam()) {
                 return mark;
@@ -27,21 +27,21 @@ public class MarkService {
         return null;
     }
 
-    public Map<Subject, List<Mark>> getAllMarks(Student student, GroupJournal groupJournal) {
+    public Map<Subject, List<Mark>> getAllMarks(Student student, GroupSemesterJournal groupSemesterJournal) {
         Map<Subject, List<Mark>> result = new HashMap<>();
-        Map<Subject, GroupSubjectJournal> journal = groupJournal.getJournal();
+        Map<Subject, GroupSubjectJournal> journal = groupSemesterJournal.getJournal();
         for (Subject subject : journal.keySet()) {
             result.put(subject, journal.get(subject).getStudentMarks(student));
         }
         return result;
     }
 
-    public void putMark(Tutor tutor, Mark mark, Subject subject, Student student, GroupJournal groupJournal) {
+    public void putMark(Tutor tutor, Mark mark, Subject subject, Student student, GroupSemesterJournal groupSemesterJournal) {
         if (!tutor.equals(subject.getTutor())) {
             System.out.println("You are not allowed to put mark on subject you are not conducting");
             return;
         }
-        Map<Subject, GroupSubjectJournal> journal = groupJournal.getJournal();
+        Map<Subject, GroupSubjectJournal> journal = groupSemesterJournal.getJournal();
         GroupSubjectJournal groupSubjectJournal = journal.get(subject);
         if (groupSubjectJournal == null) {
             throw new RuntimeException("groupSubjectJournal is null");
