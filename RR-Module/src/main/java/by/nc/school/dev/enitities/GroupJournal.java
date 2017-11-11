@@ -5,9 +5,19 @@ import java.util.Map;
 public class GroupJournal {
 
     private Map<Semester, GroupSemesterJournal>groupJournal;
+    private Group group;
 
-    public GroupJournal(Map<Semester, GroupSemesterJournal> groupJournal) {
+    public GroupJournal(Map<Semester, GroupSemesterJournal> groupJournal, Group group) {
         this.groupJournal = groupJournal;
+        this.group = group;
+    }
+
+    @Override
+    public String toString() {
+        return "GroupJournal{" +
+                "groupJournal=" + groupJournal +
+                ", group=" + group +
+                '}';
     }
 
     public Map<Semester, GroupSemesterJournal> getGroupJournal() {
@@ -18,10 +28,11 @@ public class GroupJournal {
         this.groupJournal = groupJournal;
     }
 
-    @Override
-    public String toString() {
-        return "GroupJournal{" +
-                "groupJournal=" + groupJournal +
-                '}';
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }
