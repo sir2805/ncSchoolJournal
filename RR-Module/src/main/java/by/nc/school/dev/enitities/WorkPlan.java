@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class WorkPlan extends BaseEnitity {
 
-    private Map<Integer, List<Subject>> plan;
+    private Map<Integer, List<Subject>> plan; //groupNumber and List<Subject>
     private Semester semester;
 
     public WorkPlan(int id, Map<Integer, List<Subject>> plan, Semester semester) {

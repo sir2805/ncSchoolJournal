@@ -1,6 +1,7 @@
 package by.nc.school.dev.enitities;
 
 public class Semester extends BaseEnitity {
+
     private int semesterNumber;
 
     public Semester(int id, int semesterNumber) {

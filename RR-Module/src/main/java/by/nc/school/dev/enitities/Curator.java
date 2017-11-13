@@ -4,8 +4,8 @@ public class Curator extends Tutor {
 
     private int groupNumber;
 
-    public Curator(int id, int userRole, String login, String password, String fullName, int groupNumber) {
-        super(id, userRole, login, password, fullName);
+    public Curator(int id, String fullName, int groupNumber) {
+        super(id, fullName);
         this.groupNumber = groupNumber;
     }
 
@@ -13,15 +13,8 @@ public class Curator extends Tutor {
         return groupNumber;
     }
 
-    @Override
-    public String toString() {
-        return "Curator{" +
-                "groupNumber=" + groupNumber +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", fullName='" + fullName + '\'' +
-                ", id=" + id +
-                '}';
+    public void setGroupNumber(int groupNumber) {
+        this.groupNumber = groupNumber;
     }
 
     @Override
@@ -40,5 +33,13 @@ public class Curator extends Tutor {
         int result = super.hashCode();
         result = 31 * result + groupNumber;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Curator{" +
+                "groupNumber=" + groupNumber +
+                ", fullName='" + fullName + '\'' +
+                '}';
     }
 }
