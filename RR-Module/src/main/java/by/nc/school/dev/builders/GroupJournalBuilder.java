@@ -6,6 +6,7 @@ import by.nc.school.dev.dao.SubjectDao;
 import by.nc.school.dev.dao.UserDao;
 import by.nc.school.dev.dao.entities.JournalDaoEntity;
 import by.nc.school.dev.enitities.*;
+import by.nc.school.dev.enitities.factories.UserFactory;
 import by.nc.school.dev.services.GroupJournalService;
 import by.nc.school.dev.services.ServiceFactory;
 
@@ -36,7 +37,7 @@ public class GroupJournalBuilder {
             int markValue = journalDaoEntity.getMark();
             boolean markIsExamFlag = journalDaoEntity.isExam();
             int subjectId = journalDaoEntity.getSubjectId();
-            Student student = (Student) new UserBuilder().build(userDao.get(studentId));
+            Student student = (Student) new UserFactory().build(userDao.get(studentId));
             Mark mark = new Mark(markValue, markIsExamFlag);
             Subject subject = subjectBuilder.build(subjectDao.get(subjectId));
             if (journal.containsKey(subject)) {

@@ -1,30 +1,38 @@
 package by.nc.school.dev.enitities;
 
-public class User extends BaseEnitity {
+public class User extends BaseEntity {
 
-    private String username;
-    private String password;
+    protected String fullName;
+    protected int role;
 
-    public User(int id, String username, String password) {
+    public User(int id, String fullName, int role) {
         super(id);
-        this.username = username;
-        this.password = password;
+        this.fullName = fullName;
+        this.role = role;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getPassword() {
-        return password;
+    public int getRole() {
+        return role;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "fullName='" + fullName + '\'' +
+                ", role=" + role +
+                '}';
     }
 
     @Override
@@ -34,22 +42,14 @@ public class User extends BaseEnitity {
 
         User user = (User) o;
 
-        if (username != null ? !username.equals(user.username) : user.username != null) return false;
-        return password != null ? password.equals(user.password) : user.password == null;
+        if (role != user.role) return false;
+        return fullName != null ? fullName.equals(user.fullName) : user.fullName == null;
     }
 
     @Override
     public int hashCode() {
-        int result = username != null ? username.hashCode() : 0;
-        result = 31 * result + (password != null ? password.hashCode() : 0);
+        int result = fullName != null ? fullName.hashCode() : 0;
+        result = 31 * result + role;
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
     }
 }

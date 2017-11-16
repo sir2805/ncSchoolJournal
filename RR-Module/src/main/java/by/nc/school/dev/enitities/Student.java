@@ -1,12 +1,12 @@
 package by.nc.school.dev.enitities;
 
 
-public class Student extends Person {
+public class Student extends User {
 
     private int groupNumber;
 
-    public Student(int id, String fullName, int groupNumber) {
-        super(id, fullName);
+    public Student(int id, String fullName, int role, int groupNumber) {
+        super(id, fullName, role);
         this.groupNumber = groupNumber;
     }
 
@@ -16,6 +16,15 @@ public class Student extends Person {
 
     public void setGroupNumber(int groupNumber) {
         this.groupNumber = groupNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "groupNumber=" + groupNumber +
+                ", fullName='" + fullName + '\'' +
+                ", role=" + role +
+                '}';
     }
 
     @Override
@@ -34,13 +43,5 @@ public class Student extends Person {
         int result = super.hashCode();
         result = 31 * result + groupNumber;
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "groupNumber=" + groupNumber +
-                ", fullName='" + fullName + '\'' +
-                '}';
     }
 }

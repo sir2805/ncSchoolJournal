@@ -1,23 +1,22 @@
 package by.nc.school.dev.services;
 
-import by.nc.school.dev.builders.*;
 import by.nc.school.dev.dao.DaoFactory;
 import by.nc.school.dev.dao.UserDao;
 import by.nc.school.dev.dao.entities.UserDaoEntity;
-import by.nc.school.dev.enitities.*;
+import by.nc.school.dev.enitities.factories.UserFactory;
 
 
 public class UserService {
 
     public User getUser(UserDaoEntity userDaoEntity) {
 
-        return new UserBuilder().build(userDaoEntity);
+        return new UserFactory().build(userDaoEntity);
     }
 
     public User getUserByFullName(String fullName) {
 
         UserDaoEntity userDaoEntity = new DaoFactory().getUserDao().getUserByFullName(fullName);
-        return new UserBuilder().build(userDaoEntity);
+        return new UserFactory().build(userDaoEntity);
     }
 
     public void changeUsername(User user, String newUsername) {

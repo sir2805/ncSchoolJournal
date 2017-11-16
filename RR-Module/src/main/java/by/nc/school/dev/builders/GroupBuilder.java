@@ -7,7 +7,7 @@ import by.nc.school.dev.enitities.Group;
 import by.nc.school.dev.dao.entities.GroupDaoEntity;
 import by.nc.school.dev.dao.UserDao;
 import by.nc.school.dev.enitities.Student;
-import by.nc.school.dev.enitities.Tutor;
+import by.nc.school.dev.enitities.factories.StudentFactory;
 import by.nc.school.dev.services.ServiceFactory;
 import by.nc.school.dev.services.UserService;
 
@@ -24,7 +24,7 @@ public class GroupBuilder {
     public Group build(List<GroupDaoEntity> groupDaoEntities) {
         UserDao userDao = new DaoFactory().getUserDao();
         List<Student> students = new ArrayList<>();
-        StudentBuilder studentBuilder = new StudentBuilder();
+        StudentFactory studentBuilder = new StudentFactory();
         Curator curator = null;
         int groupNumber = 0;
         UserService userService = new ServiceFactory().getUserService();

@@ -1,15 +1,16 @@
 package by.nc.school.dev.enitities;
 
-public class Tutor extends Person {
+public class Tutor extends User {
 
-    public Tutor(int id, String fullName) {
-        super(id, fullName);
+    public Tutor(int id, String fullName, int role) {
+        super(id, fullName, role);
     }
 
     @Override
     public String toString() {
         return "Tutor{" +
                 "fullName='" + fullName + '\'' +
+                ", role=" + role +
                 '}';
     }
 }
