@@ -1,5 +1,8 @@
 package by.nc.school.dev.enitities;
 
+import javax.persistence.Entity;
+
+@Entity
 public class User extends BaseEntity {
 
     protected String fullName;
