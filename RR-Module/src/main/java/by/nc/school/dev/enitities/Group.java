@@ -7,14 +7,12 @@ public class Group extends BaseEntity {
     private int groupNumber;
     private List<Student> students;
     private Curator curator;
-    private Semester currentSemester;
 
     public Group(int id, int groupNumber, List<Student> students, Curator curator, Semester currentSemester) {
         super(id);
         this.groupNumber = groupNumber;
         this.students = students;
         this.curator = curator;
-        this.currentSemester = currentSemester;
     }
 
     @Override
@@ -23,7 +21,6 @@ public class Group extends BaseEntity {
                 "groupNumber=" + groupNumber +
                 ", students=" + students +
                 ", curator=" + curator +
-                ", currentSemester=" + currentSemester +
                 '}';
     }
 
@@ -51,11 +48,4 @@ public class Group extends BaseEntity {
         this.curator = curator;
     }
 
-    public Semester getCurrentSemester() {
-        return currentSemester;
-    }
-
-    public void setCurrentSemester(Semester currentSemester) {
-        this.currentSemester = currentSemester;
-    }
 }

@@ -11,9 +11,9 @@ public class GroupSubjectJournal {
     private Map<Student, List<Mark>> marksList;
     private Tutor tutor;
 
-    public GroupSubjectJournal(Subject subject) {
+    public GroupSubjectJournal(Subject subject, Tutor tutor) {
         marksList = new HashMap<>();
-        tutor = subject.getTutor();
+        this.tutor = tutor;
     }
 
     public GroupSubjectJournal(Map<Student, List<Mark>> marksList, Tutor tutor) {
